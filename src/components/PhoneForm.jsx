@@ -34,9 +34,9 @@ const PhoneForm = ({ onCreate }) => {
     return (
         <>
             <form onSubmit={buttonSubmitHandler}>
-                <input type="text" name='name' placeholder='name' onChange={inputChangeHandler} value={name} ref={submitButton} />
-                <input type="number" name='phone' placeholder='phone' onChange={inputChangeHandler} value={phone} />
-                <button type="submit" >submit</button>
+                <input type="text" name='name' placeholder='name' onChange={inputChangeHandler} value={name} ref={submitButton} required="required" />
+                <input type="number" name='phone' placeholder='phone' onChange={inputChangeHandler} value={phone} required="required" />
+                <button type="submit" >register</button>
             </form>
         </>
     );
