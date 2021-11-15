@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 
 const PhoneInfo = ({ info, onRemove, onUpdate }) => {
     const [editing, setEditing] = useState(false);
@@ -38,6 +38,10 @@ const PhoneInfo = ({ info, onRemove, onUpdate }) => {
             setEditPhone(e.target.value);
         }
     }
+
+    useEffect(() => {
+        console.log('useEffect');
+    }, []);
 
     return (
         <div style={style}>

@@ -8,6 +8,7 @@ let id = 0;
 const App = () => {
   // const [id, setId] = useState(0);
   const [information, setInformation] = useState([]);
+  const [keyword, setKeyword] = useState("");
 
   /* 생성 */
   const handleCreate = (data) => {
@@ -30,6 +31,11 @@ const App = () => {
     }));
   }
 
+  // 검색창 입력
+  const handleChange = (e) => {
+    setKeyword(e.target.value);
+  }
+
   /* 제거 */
   const handleRemove = (id) => {
     // information배열 안 요소의 id와 파라미터로 받은 id가 일치하지 않는 요소들만 추출
@@ -37,13 +43,14 @@ const App = () => {
   }
 
 
-return (
-  <div>
-    <PhoneForm onCreate={handleCreate} />
-    <PhoneInfoList information={information} onRemove={handleRemove} onUpdate={handleUpdate} />
-    {/* {JSON.stringify(information)} */}
-  </div>
-);
+  return (
+    <div>
+      <PhoneForm onCreate={handleCreate} />
+      <input value={keyword} onChange={handleChange} placeholder="검색" />
+      <PhoneInfoList information={information.filter(info => info.name.indexOf(keyword) > -1)} onRemove={handleRemove} onUpdate={handleUpdate} />
+      {/* {JSON.stringify(information)} */}
+    </div>
+  );
 };
 
 export default App;
